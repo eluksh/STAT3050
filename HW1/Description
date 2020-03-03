@@ -1,0 +1,132 @@
+Homework 1: Intro to T-Tests, Paired, and Unpaired data 
+Names: Emily Lukshin and Cody Akin
+Grade: ___ / 10
+
+Question set 1: Badland’s Fire Ecology
+About the data: A controlled or prescribed burn, also known as hazard reduction burning, is a wildfire set intentionally for purposes of forest management, farming, and prairie restoration. These data are individual abundance measures of certain guilds of plant life (shrubs, forbs, grasses, and the like) from Badlands National Park before, one year after, and two years after a controlled burn in a block design. Important note: the data are paired! 
+
+A)	Create a figure that properly demonstrate the difference between each time period (hint: use the gather( ) function to turn data from wide to long) 
+ 
+B)	Based on your answer above, what are your initial thoughts on the relationship between the Pre-burn density and the years following a controlled burn? 
+Based on the figure, it is clear that there is a difference between the pre-burn density and the post-year 1 burn, and I predict that after conducting a t-test the results will show that there is a statistically significant difference. Between the pre-burn density and the post-year 2 burn, it is less clear whether there is a difference, or at least a large enough difference for the two groups to be considered statistically significantly different, but I still predict that the results of the t-test will report that there is a difference. 
+
+C)	Do a proper statistical analysis comparing the abundance measures of Pre-burn¬ vs 1 Year Post-Burn and Pre-burn¬ vs 2 Year Post-Burn. Be sure to report the estimated difference in means, 95% confidence interval for that difference, the interpretation of that 95% C.I., the p-value with interpretation for each test. 
+Year 1 Post Burn
+Paired t-test
+data:  badlands$PreBurn and badlands$Year1Post
+t = 3.8695, df = 41, p-value = 0.0003832
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  7.854266 25.002877
+sample estimates:
+mean of the differences 
+               16.42857
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 16.42857 and is 3.8695 standard error units away from 0. We can be 95% confident that the true difference in means is between 7.854266 and 25.002877 units.
+Year 2 Post Burn
+Paired t-test
+data:  badlands$PreBurn and badlands$Year2Post
+t = 2.0671, df = 41, p-value = 0.04507
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  0.1496336 12.8503664
+sample estimates:
+mean of the differences 
+                    6.5
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 6.5 and is 2.0671 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.1496336 and 12.8503664 units.
+
+D)	Let’s say that we want to round the p-values to the second decimal place (i.e. 0.035  0.04). Does this change your interpretation of your analysis? 
+For the post-year 2 t-test, if you rounded the p-value to the second decimal place you would no longer be able to report that p-value is less than 0.05 which is the alpha and we would not be able to say there is a true mean difference. Because the two groups are so close and there is not that much of a different it is important to not round and report that the t-test finds a difference, but it is slight.
+E)	Lastly, complete a 1-sample t-test version of your above analysis. Only report any difference you see between the output from question 1C and this output (hint: create new variables based on the difference between post-burn(s) and pre-burn, subtraction is your friend here)
+Year 1 Post Burn
+One Sample t-test
+data:  badlands$Year1Dif
+t = 3.8695, df = 41, p-value = 0.0003832
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+  7.854266 25.002877
+sample estimates:
+mean of x 
+ 	16.42857
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 16.42857 and is 3.8695 standard error units away from 0. We can be 95% confident that the true difference in means is between 7.854266 and 25.002877 units.
+	Year 2 Post Burn
+One Sample t-test
+data:  badlands$Year2Dif
+t = 2.0671, df = 41, p-value = 0.04507
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+  0.1496336 12.8503664
+sample estimates:
+mean of x 
+     	 6.5
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 6.5 and is 2.0671 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.1496336 and 12.8503664 units.
+Question set 2: Chicken Weight 
+About the data: The weight of chickens has increased greatly within the last century, mainly due to changes in nutrition and pharmaceuticals. The purpose of this study was to investigate a drug added to the feed of chicks in an attempt to promote growth. Chickens were divided into dosage (g) and weighed in pounds (average per block. Read: each block represents some number of chickens, rather than just one. Also, data are unpaired). 
+
+A)	Create a figure that properly demonstrate the difference between each dosage (hint: use the gather( ) function to turn data from wide to long) 
+ 
+B)	Based on your answer above, what are your initial thoughts on the relationship between the control and the two dosage types? 
+Based on the figure, it is clear that there is a difference between the control group and the low-dosage group, and between the control group and the high-dosage group. I predict that after conducting a t-test to compare both groups to the control group, the results will show that there is a statistically significant difference. 
+C)	Do a proper statistical analysis comparing the abundance measures of Control vs Low Dose and Control vs High Dose. Be sure to report the estimated difference in means, 95% confidence interval for that difference, the interpretation of that 95% C.I., the p-value with interpretation for each test. 
+Low Dosage
+Welch Two Sample t-test
+data:  chicken$Low.dose and chicken$Control
+t = 3.9821, df = 12.967, p-value = 0.001571
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.06345604 0.21404396
+sample estimates:
+mean of x mean of y 
+  4.00500   3.86625
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 0.13875 and is 3.9821 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.06345604 and 0.21404396 units.
+High Dosage
+Welch Two Sample t-test
+data:  chicken$High.dose and chicken$Control
+t = 4.1245, df = 13.87, p-value = 0.001051
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.0821205 0.2603795
+sample estimates:
+mean of x mean of y 
+  4.03750   3.86625
+Since p-value is less than 0.05, we can say there is a statistically significant difference between the two groups. The difference in means is 0.17125 and is 4.1245 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.0821205 and 0.2603795 units.
+
+D)	Let’s say that we have a hunch that the weight on the control group was going to be less than the two other groups before doing our analysis. Run a one-sided t-test with respect to our alternative hypothesis (hint: alternative = “less”). Report the relationship between the p-values from these tests and the previous two-sided tests. 
+Low Dosage
+Welch Two Sample t-test
+data:  chicken$Control and chicken$Low.dose
+t = -3.9821, df = 12.967, p-value = 0.0007857
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+        -Inf -0.07703272
+sample estimates:
+mean of x mean of y 
+  3.86625   4.00500
+Since p-value is less than 0.05, we can say that the control group is a statistically significantly less than the low dosage group. The difference in means is 0.13875 and is 3.9821 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.06345604 and 0.21404396 units.
+High Dosage
+Welch Two Sample t-test
+data:  chicken$Control and chicken$High.dose
+t = -4.1245, df = 13.87, p-value = 0.0005255
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+        -Inf -0.09807233
+sample estimates:
+mean of x mean of y 
+  3.86625   4.03750
+Since p-value is less than 0.05, we can say that the control group is a statistically significantly less than the control group. The difference in means is 0.17125 and is 4.1245 standard error units away from 0. We can be 95% confident that the true difference in means is between 0.0821205 and 0.2603795 units.
+For one-tailed tests, it is important to recognize what group is x and what group is y unlike in the two-tailed test that is only asking if there is a difference and not comparing to determine if one is greater/less than. To make the values positive in the two-tailed test I assigned the dosage groups as x and the control group as y, however, if you run that setup in a one-tailed test you are asking if the dosage group is less than the control group, which we know they are not. Running the t-test this way will result in a p-value that is very high. To get a representative p-value, you can switch the assignment of x and y, putting the control group as x and the dosage group as y, or simply subtract the p-value from 1 because you want the area under the distribution curve in the other direction.
+
+Question set 3: Concepts
+A)	What are the assumptions for t-tests? 
+For t-tests to be conducted, the variables must be continuous, the observations must be independent of one another, and the variable should be approximately normally distributed. 
+B)	How does changing the confidence level change the confidence interval (i.e. how is a 95% C.I. different from a 99% C.I. and 80% C.I.)? Feel free to try this on either t-test above (in the t.test function, change the ‘conf.level’ argument to ‘conf.level = 0.99’ etc etc). If you decide to try this on the t-tests above, there’s no need to report the actual interval, just how it behaves as you change the confidence level. 
+As the confidence level increases, like from 95% to 99% confidence, the confidence interval widens to more confidently capture the true mean.
+C)	Let’s say you were looking at the difference between two samples of paired data. You then calculate the 95% confidence interval to be (-1.45, 2.54). Will the p-value be greater than or less than 0.05? Explain your reasoning.   
+The p-value will be greater than 0.05, because 0 is in the interval which means that there is a possibility that the difference between the groups is 0.
+
+Please answer the following questions for your homework to be graded:  
+A)	How did you and your partner(s) split the work on this assignment? 
+We worked together through the assignment and talked through the problem to get the answer and understand what was being asked.
+
+B)	What did you find difficult in this assignment? 
+I think the most difficult part was writing the code correctly without errors in R, other than that I don’t think the assignment was that hard.
+
