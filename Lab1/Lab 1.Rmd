@@ -1,0 +1,129 @@
+---
+title: "Lab 1: Data Manipulation & Figures "
+author: "Emily Lukshin"
+output: html_document
+---
+
+### **A: Read in the "Badlands" dataset (either .csv or .txt)**
+
+```{r}
+  badlands <- read.csv("Badlands.csv")
+```
+
+### **B: What is the structure is your dataset and what class is each variable?**
+
+```{r}
+  str(badlands)
+```
+
+### **C: Provide a summary of your dataset.**
+
+```{r}
+  summary(badlands)
+```
+
+### **D: Provide the first 6 and last 6 observations of all variables.**
+
+The first 6 observations:
+```{r}
+  head(badlands)
+```
+
+The last 6 observations:
+```{r}
+  tail(badlands, 6)
+```
+
+### **E: Create a subset of your data to include only *Native Forb*. Show a summary of the new subset.**
+
+```{r}
+  native_forbs <- subset(x = badlands, subset = Preferred.Lifeform == "Native Forb")
+
+  summary(native_forbs)
+```
+
+### **F: Make a boxplot for each of the variables (as one figure).**
+
+Preburn data:
+```{r}
+  library(tidyverse)
+  ggplot(
+   data = badlands,
+   aes(
+     x = Preferred.Lifeform,
+     y = Pre_burn
+   )
+  ) +
+   stat_boxplot(
+    geom = "errorbar"
+  ) +
+  geom_boxplot(
+  
+  ) + 
+  labs(
+    x = "Preferred Lifeform",
+    y = "Preburn",
+    title = "Preburn"
+  ) + 
+  theme_classic( )
+```
+
+1 Year Post Burn data:
+```{r}
+  library(tidyverse)
+  ggplot(
+   data = badlands,
+   aes(
+     x = Preferred.Lifeform,
+     y = X1yr_post_burn
+   )
+  ) +
+   stat_boxplot(
+    geom = "errorbar"
+  ) +
+  geom_boxplot(
+  
+  ) + 
+  labs(
+    x = "Preferred Lifeform",
+    y = "1st Year After Burn",
+    title = "1st Year After Burn"
+  ) + 
+  theme_classic( )
+```
+
+2 Years After Burn
+```{r}
+  library(tidyverse)
+  ggplot(
+   data = badlands,
+   aes(
+     x = Preferred.Lifeform,
+     y = X2yr_post_burn
+   )
+  ) +
+   stat_boxplot(
+    geom = "errorbar"
+  ) +
+  geom_boxplot(
+  
+  ) + 
+  labs(
+    x = "Preferred Lifeform",
+    y = "2nd Year Post Burn",
+    title = "2nd Year After Burn"
+  ) + 
+  theme_classic( )
+```
+--- 
+## The following must be answered to be graded: 
+
+### **G: Since you worked in partners, briefly explain how you split the work between the two of you.** 
+
+We worked through check part together and completed the assignment with the help of each other.
+
+### **H: What did you struggle with most in this lab?**
+
+I think the hardest part was remembering the function names and getting the syntax correct so that the code would run properly.
+
+
